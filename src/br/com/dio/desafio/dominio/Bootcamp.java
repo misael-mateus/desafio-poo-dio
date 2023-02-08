@@ -55,6 +55,15 @@ public class Bootcamp {
         this.conteudos = conteudos;
     }
 
+    public void inscreverDev(Dev dev){
+        this.devsInscritos.add(dev);
+    }
+
+    public void publicarConteudo(Conteudo conteudo){
+        this.conteudos.add(conteudo);
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,5 +1,6 @@
 package br.com.dio.desafio.dominio;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Dev {
@@ -20,6 +21,20 @@ public class Dev {
         } else {
             System.err.println("Você não está matriculado em nenhum conteúdo!");
         }
+    }
+
+    public Mentoria buscarMentoria(LocalDate data) {
+        return (Mentoria) this.conteudosConcluidos
+                .stream()
+                .filter(c -> c instanceof Mentoria)
+                .filter(c -> ((Mentoria) c).getData().equals(data))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void cancelarInscricao(Bootcamp bootcamp) {
+        this.conteudosInscritos.removeAll(bootcamp.getConteudos());
+        bootcamp.getDevsInscritos().remove(this);
     }
 
     public double calcularTotalXp() {
